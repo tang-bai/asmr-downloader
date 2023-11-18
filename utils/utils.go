@@ -158,12 +158,20 @@ func DownloadFile(storePath string, fileUrl string) error {
 //	@param path
 //	@param filename
 //	@return func()
+// NewFileDownloader 下载文件
 func NewFileDownloader(url string, path string, filename string) func() error {
 	return func() error {
 		var fileUrl = url
 		var filePathToStore = path
 		var fileName = filename
 		var storePath = filepath.Join(filePathToStore, fileName)
+
+		// Check if the file extension is WAV
+		if strings.HasSuffix(fileUrl, ".wav") {
+			log.AsmrLog.Info("跳过下载 WAV 格式的文件: ", zap.String("info", fileUrl))
+			return nil
+		}
+
 		fileClient := got.New()
 		err := fileClient.Download(fileUrl, storePath)
 
@@ -178,27 +186,22 @@ func NewFileDownloader(url string, path string, filename string) func() error {
 			}
 
 			log.AsmrLog.Error(err.Error())
-			//fmt.Printf("文件: %s下载失败: %s\n", fileName, fileUrl)
 			log.AsmrLog.Error(fmt.Sprintf("文件: %s下载失败: %s", fileName, err.Error()))
-			//记录失败文件  时间, 文件路径，文件url
 			logStr := GetCurrentDateTime() + "|" + storePath + "|" + fileUrl + "\n"
 			write := bufio.NewWriter(FailedDownloadFile)
 			_, _ = write.WriteString(logStr)
-			//Flush将缓存的文件真正写入到文件中
 			write.Flush()
-			//清理下载失败的文件碎片
 			err2 := os.Remove(storePath)
 			if err2 != nil {
 				log.AsmrLog.Error("删除碎片文件失败文件失败:", zap.String("error", err2.Error()))
 			}
 		} else {
 			log.AsmrLog.Info("文件下载成功: ", zap.String("info", fileName))
-			//fmt.Println("文件下载成功: ", filePathToStore)
 		}
 		return nil
 	}
-
 }
+
 
 // GetCurrentDateTime
 //
