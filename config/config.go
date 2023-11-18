@@ -19,7 +19,7 @@ const MetaDataDb = "asmr.db"
 
 // AsmroneStartPageUrl https://api.asmr.one/api/works?order=create_date&sort=desc&page=1&seed=92&subtitle=0
 const AsmrOneStartPageUrl = "https://api.asmr.one"
-const Asmr100StartPageUrl = "https://api.asmr-100.com"
+const Asmr300StartPageUrl = "https://api.asmr-300.com"
 const Asmr200StartPageUrl = "https://api.asmr-200.com"
 
 var AsmrBaseApiUrl = ""
@@ -35,8 +35,8 @@ func init() {
 		log.AsmrLog.Info("当前使用asmr-200.com访问")
 		AsmrBaseApiUrl = Asmr200StartPageUrl
 	} else {
-		log.AsmrLog.Info("当前使用asmr-100.com访问...")
-		AsmrBaseApiUrl = Asmr100StartPageUrl
+		log.AsmrLog.Info("当前使用asmr-300.com访问...")
+		AsmrBaseApiUrl = Asmr300StartPageUrl
 	}
 	utils.Client.Put(client)
 	defer resp.Body.Close()
