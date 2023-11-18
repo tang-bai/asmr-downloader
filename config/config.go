@@ -18,7 +18,7 @@ const ConfigFileName = "config.json"
 const MetaDataDb = "asmr.db"
 
 // AsmroneStartPageUrl https://api.asmr.one/api/works?order=create_date&sort=desc&page=1&seed=92&subtitle=0
-// const AsmrOneStartPageUrl = "https://api.asmr.one"
+const AsmrOneStartPageUrl = "https://api.asmr.one"
 const Asmr100StartPageUrl = "https://api.asmr-100.com"
 const Asmr200StartPageUrl = "https://api.asmr-200.com"
 
