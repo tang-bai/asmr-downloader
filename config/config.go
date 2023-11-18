@@ -42,7 +42,7 @@ func GetAsmrLatestUrls() ([]string, error) {
 	//访问asmr.one 最新域名发布页
 	// official : https://as.mr
 	// cf worker proxy: https://asmr.tangbai.cc
-	var officialPublishSite = "https://as.mr"
+	var officialPublishSite = "https://asmr.tangbai.cc"
 	var cfProxyPublishSite = "https://asmr.tangbai.cc"
 	var latestPublishSite = ""
 	client := utils.Client.Get().(*http.Client)
