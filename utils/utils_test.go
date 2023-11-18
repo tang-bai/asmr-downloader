@@ -49,10 +49,10 @@ func TestGetRapidRespSiteUrl(t *testing.T) {
 	resp, err := client.Do(req)
 	if err != nil || resp.StatusCode != 200 {
 		println("尝试访问asmr.one最新站点发布页as.mr失败: ", err.Error())
-		println("当前使用as.131433.xyz访问")
+		println("当前使用asmr.tangbai.cc访问")
 		latestPublishSite = cfProxyPublishSite
 	} else {
-		println("当前使用as.131433.xyz访问...")
+		println("当前使用asmr.tangbai.cc访问...")
 		latestPublishSite = officialPublishSite
 	}
 	Client.Put(client)
