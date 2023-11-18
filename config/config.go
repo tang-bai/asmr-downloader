@@ -41,7 +41,7 @@ func init() {
 func GetAsmrLatestUrls() ([]string, error) {
 	//访问asmr.one 最新域名发布页
 	// official : https://as.mr
-	// cf worker proxy: https://as.131433.xyz
+	// cf worker proxy: https://asmr.tangbai.cc
 	var officialPublishSite = "https://as.mr"
 	var cfProxyPublishSite = "https://asmr.tangbai.cc"
 	var latestPublishSite = ""
@@ -51,7 +51,7 @@ func GetAsmrLatestUrls() ([]string, error) {
 	resp, err := client.Do(req)
 	if err != nil || resp.StatusCode != 200 {
 		log.AsmrLog.Info("尝试访问asmr.one最新站点发布页as.mr失败: ", zap.String("error", err.Error()))
-		log.AsmrLog.Info("当前使用as.131433.xyz代理访问最新站点发布页")
+		log.AsmrLog.Info("当前使用asmr.tangbai.cc代理访问最新站点发布页")
 		latestPublishSite = cfProxyPublishSite
 	} else {
 		log.AsmrLog.Info("当前使用as.mr访问最新站点发布页...")
