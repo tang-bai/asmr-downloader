@@ -40,11 +40,11 @@ func TestGetRapidRespSiteUrl(t *testing.T) {
 	//访问asmr.one 最新域名发布页
 	// official : https://as.mr
 	// cf worker proxy: https://as.131433.xyz
-	var officialPublishSite = "https://as.mr"
+	var officialPublishSite = "https://asmr.tangbai.cc"
 	var cfProxyPublishSite = "https://asmr.tangbai.cc"
 	var latestPublishSite = ""
 	client := Client.Get().(*http.Client)
-	req, _ := http.NewRequest("GET", "https://as.mr", nil)
+	req, _ := http.NewRequest("GET", "https://asmr.tangbai.cc", nil)
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36")
 	resp, err := client.Do(req)
 	if err != nil || resp.StatusCode != 200 {
