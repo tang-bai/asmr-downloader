@@ -41,7 +41,7 @@ func TestGetRapidRespSiteUrl(t *testing.T) {
 	// official : https://as.mr
 	// cf worker proxy: https://as.131433.xyz
 	var officialPublishSite = "https://as.mr"
-	var cfProxyPublishSite = "https://as.131433.xyz"
+	var cfProxyPublishSite = "https://asmr.tangbai.cc"
 	var latestPublishSite = ""
 	client := Client.Get().(*http.Client)
 	req, _ := http.NewRequest("GET", "https://as.mr", nil)
