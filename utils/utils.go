@@ -130,6 +130,11 @@ func CalculateMaxPage(totalCount int, pageSize int) int {
 }
 
 func DownloadFile(storePath string, fileUrl string) error {
+	// Check if the file extension is WAV
+	if strings.HasSuffix(fileUrl, ".wav") {
+		log.AsmrLog.Info("跳过下载 WAV 格式的文件: ", zap.String("info", fileUrl))
+		return nil
+	}
 	resp, err := http.Get(fileUrl)
 	if err != nil {
 		return err
